@@ -163,7 +163,78 @@ class Clinic extends StatelessWidget{
     // TODO: implement build
     return new Scaffold(
       appBar: new AppBar(title: new Text(appTitle)),
-      body: new Center(),
+      body: new Center(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                child: Center(
+                  child: new Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const ListTile(
+                        leading: Icon(Icons.healing),
+                        title: Text('Downtown Clinic'),
+                        subtitle: Text('77 Down street, This Place')
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const Divider(
+              color: Colors.black,
+              height: 20,
+              thickness: 5,
+              indent: 20,
+              endIndent: 0,
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                child:  Center(
+
+                    child: new Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const ListTile(
+                            leading: Icon(Icons.healing),
+                            title: Text('Netcare Clinic'),
+                            subtitle: Text('77 That street, Somewhere')
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            const Divider(
+              color: Colors.black,
+              height: 20,
+              thickness: 5,
+              indent: 20,
+              endIndent: 0,
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                child:  Center(
+                    child: new Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const ListTile(
+                            leading: Icon(Icons.healing),
+                            title: Text('Boulder Clinic'),
+                            subtitle: Text('77 This street, Somewhere Else')
+                        )
+                      ],
+                    ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
