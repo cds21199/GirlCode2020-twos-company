@@ -5,17 +5,16 @@ class Caregiver extends Model {
 
   static String table = 'caregiver';
 
-  int caregiverID;
+  int id;
   String caregiverFName;
   String caregiverLName;
   String caregiverContact;
 
-  Caregiver({ this.caregiverID, this.caregiverFName, this.caregiverLName, this.caregiverContact});
+  Caregiver({ this.id, this.caregiverFName, this.caregiverLName, this.caregiverContact});
 
   Map<String, dynamic> toMap() {
 
     Map<String, dynamic> map = {
-      'caregiverID': caregiverID,
       'babyFName': caregiverFName,
       'babyLName': caregiverLName,
       'caregiverContact': caregiverContact,
@@ -28,7 +27,7 @@ class Caregiver extends Model {
   static Caregiver fromMap(Map<String, dynamic> map) {
 
     return Caregiver(
-      caregiverID: map['caregiverID'],
+      id: map['id'],
       caregiverFName: map['babyFName'],
       caregiverLName: map['babyLName'],
       caregiverContact: map['caregiverContact'],

@@ -5,16 +5,15 @@ class Clinic extends Model {
 
   static String table = 'records';
 
-  int clinicID;
+  int id;
   String clinicName;
   String clinicAddress;
 
-  Clinic({ this.clinicID, this.clinicName, this.clinicAddress});
+  Clinic({ this.id, this.clinicName, this.clinicAddress});
 
   Map<String, dynamic> toMap() {
 
     Map<String, dynamic> map = {
-      //'clinicID': clinicID,
       'clinicName': clinicName,
       'clinicAddress': clinicAddress,
     };
@@ -26,7 +25,7 @@ class Clinic extends Model {
   static Clinic fromMap(Map<String, dynamic> map) {
 
     return Clinic(
-        clinicID: map['clinicID'],
+        id: map['id'],
         clinicName: map['clinicName'],
         clinicAddress: map['clinicAddress'],
     );

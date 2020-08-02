@@ -5,17 +5,16 @@ class Voucher extends Model {
 
   static String table = 'records';
 
-  int voucherID;
+  int id;
   //FK
   int caregiverID;
   int vaccineID;
 
-  Voucher({ this.voucherID, this.caregiverID, this.vaccineID});
+  Voucher({ this.id, this.caregiverID, this.vaccineID});
 
   Map<String, dynamic> toMap() {
 
     Map<String, dynamic> map = {
-      'voucherID': voucherID,
       'caregiverID': caregiverID,
       'vaccineID': vaccineID,
     };
@@ -27,7 +26,7 @@ class Voucher extends Model {
   static Voucher fromMap(Map<String, dynamic> map) {
 
     return Voucher(
-      voucherID: map['voucherID'],
+      id: map['id'],
       caregiverID: map['caregiverID'],
       vaccineID: map['vaccineID'],
     );

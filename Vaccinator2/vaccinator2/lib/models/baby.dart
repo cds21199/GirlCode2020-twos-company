@@ -5,7 +5,7 @@ class Baby extends Model {
 
   static String table = 'baby';
 
-  int babyID;
+  int id;
   String babyFName;
   String babyLName;
   DateTime babyDOB;
@@ -13,12 +13,11 @@ class Baby extends Model {
   //as FK
   int caregiverID;
 
-  Baby({ this.babyID, this.babyFName, this.babyLName, this.babyDOB, this.babyWeight, this.caregiverID});
+  Baby({ this.id, this.babyFName, this.babyLName, this.babyDOB, this.babyWeight, this.caregiverID});
 
   Map<String, dynamic> toMap() {
 
     Map<String, dynamic> map = {
-      'babyID': babyID,
       'babyFName': babyFName,
       'babyLName': babyLName,
       'babyDOB': babyDOB,
@@ -33,7 +32,7 @@ class Baby extends Model {
   static Baby fromMap(Map<String, dynamic> map) {
 
     return Baby(
-        babyID: map['babyID'],
+        id: map['id'],
         babyFName: map['babyFName'],
         babyLName: map['babyLName'],
         babyDOB: map['babyDOB'],

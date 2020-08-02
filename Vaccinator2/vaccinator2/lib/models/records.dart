@@ -5,7 +5,7 @@ class Records extends Model {
 
   static String table = 'records';
 
-  int recordID;
+  int id;
   bool complete;
   DateTime recordDate;
   //as FK
@@ -13,12 +13,11 @@ class Records extends Model {
   int babyID;
   int clinicID;
 
-  Records({ this.recordID, this.complete, this.recordDate, this.vaccineID, this.babyID, this.clinicID});
+  Records({ this.id, this.complete, this.recordDate, this.vaccineID, this.babyID, this.clinicID});
 
   Map<String, dynamic> toMap() {
 
     Map<String, dynamic> map = {
-      'recordID': recordID,
       'complete': complete,
       'recordDate': recordDate,
       'vaccineID': vaccineID,
@@ -33,7 +32,7 @@ class Records extends Model {
   static Records fromMap(Map<String, dynamic> map) {
 
     return Records(
-        recordID: map['recordID'],
+        id: map['id'],
         complete: map['complete'],
         recordDate: map['recordDate'],
         vaccineID: map['vaccineID'],

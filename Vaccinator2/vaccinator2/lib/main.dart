@@ -10,7 +10,10 @@ import 'package:vaccinator2/models/records.dart';
 import 'package:vaccinator2/models/vaccine.dart';
 //
 
-void main(){
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await DB.init();
   runApp(new MyApp());
 }
 
@@ -163,14 +166,14 @@ class _MilestoneState extends State<Milestone> {
   }
 }
 
-class Clinic extends StatefulWidget{
-  Clinic({Key key}) : super(key: key);
+class Clinic2 extends StatefulWidget{
+  Clinic2({Key key}) : super(key: key);
 
   @override
   _ClinicState createState() => _ClinicState();
 }
 
-class _ClinicState extends State<Clinic> {
+class _ClinicState extends State<Clinic2> {
   List<Item> _data = generateItems(8);
 
   //List<Widget> get _clinic => _clinic.map((clinic) => format(clinic)).toList();
@@ -216,7 +219,7 @@ class _ClinicState extends State<Clinic> {
   }
 }
 
-class Clinic2 extends StatelessWidget{
+class Clinic extends StatelessWidget{
   final String appTitle = "Nearest Clinic";
 
   @override
@@ -237,7 +240,7 @@ class Clinic2 extends StatelessWidget{
                     children: <Widget>[
                       const ListTile(
                         leading: Icon(Icons.healing),
-                        title: Text(""),
+                        title: Text("Downtown Clinic"),
                         subtitle: Text('77 Down street, This Place')
                       )
                     ],
