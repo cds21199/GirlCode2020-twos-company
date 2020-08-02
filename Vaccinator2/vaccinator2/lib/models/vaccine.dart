@@ -7,17 +7,16 @@ class Vaccine extends Model {
 
   int vaccineID;
   String vaccineName;
-  //FK
-  int milestoneID;
+  String milestone;
 
-  Vaccine({ this.vaccineID, this.vaccineName, this.milestoneID});
+  Vaccine({ this.vaccineID, this.vaccineName, this.milestone});
 
   Map<String, dynamic> toMap() {
 
     Map<String, dynamic> map = {
       'vaccineID': vaccineID,
       'vaccineName': vaccineName,
-      'milestoneID': milestoneID,
+      'milestone': milestone,
     };
 
     if (id != null) { map['id'] = id; }
@@ -29,7 +28,7 @@ class Vaccine extends Model {
     return Vaccine(
       vaccineID: map['vaccineID'],
       vaccineName: map['vaccineName'],
-      milestoneID: map['milestoneID'],
+      milestone: map['milestone'],
     );
   }
 }

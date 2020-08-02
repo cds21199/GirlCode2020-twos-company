@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:vaccinator2/models//todo-item.dart';
+//DB Helper
 import 'package:vaccinator2/services/db.dart';
+//DB Tables
+import 'package:vaccinator2/models/baby.dart';
+import 'package:vaccinator2/models/caregiver.dart';
+import 'package:vaccinator2/models/voucher.dart';
+import 'package:vaccinator2/models/clinic.dart';
+import 'package:vaccinator2/models/records.dart';
+import 'package:vaccinator2/models/vaccine.dart';
+//
 
 void main(){
   runApp(new MyApp());
@@ -38,9 +46,9 @@ class Home extends StatelessWidget{
               padding: EdgeInsets.zero,
               children: <Widget>[
                 new DrawerHeader(
-                  child: new Text("Profile"),
+                  child: new Text("Profile"), //need to add stuff about caregiver here
                   decoration: new BoxDecoration(
-                      color: Colors.blue
+                      color: Colors.lightBlue
                   ),
                 ),
                 new ListTile(
@@ -155,12 +163,66 @@ class _MilestoneState extends State<Milestone> {
   }
 }
 
-class Clinic extends StatelessWidget{
+class Clinic extends StatefulWidget{
+  Clinic({Key key}) : super(key: key);
+
+  @override
+  _ClinicState createState() => _ClinicState();
+}
+
+class _ClinicState extends State<Clinic> {
+  List<Item> _data = generateItems(8);
+
+  //List<Widget> get _clinic => _clinic.map((clinic) => format(clinic)).toList();
+
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Container(
+        child: _buildPanel(),
+      ),
+    );
+  }
+
+  Widget _buildPanel() {
+    return ExpansionPanelList(
+      expansionCallback: (int index, bool isExpanded) {
+        setState(() {
+          _data[index].isExpanded = !isExpanded;
+        });
+      },
+      children: _data.map<ExpansionPanel>((Item item) {
+        return ExpansionPanel(
+          headerBuilder: (BuildContext context, bool isExpanded) {
+            return ListTile(
+              title: Text(item.headerValue != null ? item.headerValue : "oops"),
+            );
+          },
+          body: ListTile(
+              title: Text(
+                  item.expandedValue != null ? item.expandedValue : "oops"),
+              subtitle: Text('To delete this panel, tap the trash can icon'),
+              trailing: Icon(Icons.delete),
+              onTap: () {
+                setState(() {
+                  _data.removeWhere((currentItem) => item == currentItem);
+                });
+              }),
+          isExpanded: item.isExpanded,
+        );
+      }).toList(),
+    );
+  }
+}
+
+class Clinic2 extends StatelessWidget{
   final String appTitle = "Nearest Clinic";
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     return new Scaffold(
       appBar: new AppBar(title: new Text(appTitle)),
       body: new Center(
@@ -175,7 +237,7 @@ class Clinic extends StatelessWidget{
                     children: <Widget>[
                       const ListTile(
                         leading: Icon(Icons.healing),
-                        title: Text('Downtown Clinic'),
+                        title: Text(""),
                         subtitle: Text('77 Down street, This Place')
                       )
                     ],

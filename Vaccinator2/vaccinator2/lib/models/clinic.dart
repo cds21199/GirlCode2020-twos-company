@@ -14,7 +14,7 @@ class Clinic extends Model {
   Map<String, dynamic> toMap() {
 
     Map<String, dynamic> map = {
-      'clinicID': clinicID,
+      //'clinicID': clinicID,
       'clinicName': clinicName,
       'clinicAddress': clinicAddress,
     };
